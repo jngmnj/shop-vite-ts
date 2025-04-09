@@ -1,28 +1,80 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+// eslint.config.js
+import { fixupPluginRules } from "@eslint/compat";
+import eslintJS from "@eslint/js";
+import tsParser from "@typescript-eslint/parser";
+import eslintPluginImport from "eslint-plugin-import";
+import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
+import eslintPluginPrettier from "eslint-plugin-prettier";
+import eslintPluginReact from "eslint-plugin-react";
+import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+import eslintPluginReactRefresh from "eslint-plugin-react-refresh";
+import globals from "globals";
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+const patchedImportPlugin = fixupPluginRules(eslintPluginImport);
+const patchedReactHooksPlugin = fixupPluginRules(eslintPluginReactHooks);
+
+export default [
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    files: ["src/**/*.ts", "src/**/*.tsx"],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        project: "./tsconfig.json",
+        ecmaFeatures: { jsx: true },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+      },
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      react: eslintPluginReact,
+      "react-hooks": patchedReactHooksPlugin,
+      "jsx-a11y": eslintPluginJsxA11y,
+      import: patchedImportPlugin,
+      "react-refresh": eslintPluginReactRefresh,
+      prettier: eslintPluginPrettier,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
+      ...eslintJS.configs.recommended.rules,
+      ...eslintPluginReact.configs.recommended.rules,
+      ...patchedReactHooksPlugin.configs.recommended.rules,
+
+      // Airbnb 룰 핵심 추출
+      "react/jsx-filename-extension": ["warn", { extensions: [".tsx"] }],
+      "react/prop-types": "off",
+      "react/react-in-jsx-scope": "off",
+      "jsx-a11y/anchor-is-valid": "warn",
+      "import/order": [
+        "error",
+        {
+          groups: [["builtin", "external"], "internal"],
+          "newlines-between": "always",
+        },
+      ],
+
+      // 추가된 플러그인 적용
+      "react-refresh/only-export-components": [
+        "warn",
         { allowConstantExport: true },
       ],
+      "prettier/prettier": [
+        "error",
+        {
+          endOfLine: "auto",
+          singleQuote: true,
+          trailingComma: "all",
+          tabWidth: 2,
+          useTabs: false,
+        },
+      ],
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
   },
-)
+];
