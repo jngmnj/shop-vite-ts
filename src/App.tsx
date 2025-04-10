@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DefaultLayout from "./layout/DefaultLayout";
-import MainPage from "./pages/MainPage";
-import ProductPage from "./pages/ProductPage";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DefaultLayout from './layout/DefaultLayout';
+import MainPage from './pages/MainPage';
+import ProductPage from './pages/ProductPage';
 
 function App() {
   return (
