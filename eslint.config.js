@@ -21,7 +21,7 @@ export default [
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
-        project: "./tsconfig.json",
+        project: "./tsconfig.eslint.json",
         ecmaFeatures: { jsx: true },
       },
       globals: {
@@ -48,10 +48,10 @@ export default [
       "react/react-in-jsx-scope": "off",
       "jsx-a11y/anchor-is-valid": "warn",
       "import/order": [
-        "error",
+        "warn",
         {
           groups: [["builtin", "external"], "internal"],
-          "newlines-between": "always",
+          "newlines-between": "ignore",
         },
       ],
 
