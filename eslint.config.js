@@ -38,6 +38,7 @@ export default [
       prettier: eslintPluginPrettier,
     },
     rules: {
+      ...js.configs.recommended.rules,
       ...eslintJS.configs.recommended.rules,
       ...eslintPluginReact.configs.recommended.rules,
       ...patchedReactHooksPlugin.configs.recommended.rules,
@@ -47,6 +48,7 @@ export default [
       "react/prop-types": "off",
       "react/react-in-jsx-scope": "off",
       "jsx-a11y/anchor-is-valid": "warn",
+      "jsx-a11y/alt-text": "warn",
       "import/order": [
         "warn",
         {
@@ -54,6 +56,10 @@ export default [
           "newlines-between": "ignore",
         },
       ],
+      "prefer-const": ["error", {
+        "destructuring": "all",         // 배열과 객체 분해할당에도 적용
+        "ignoreReadBeforeAssign": false // 변수 선언 전에 읽히는 경우를 무시할지 여부
+      }],
 
       // 추가된 플러그인 적용
       "react-refresh/only-export-components": [
