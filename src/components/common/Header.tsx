@@ -1,8 +1,8 @@
+import cartIcon from '@/assets/icons/32px/Cart.svg';
+import favorIcon from '@/assets/icons/32px/Favorites.svg';
+import userIcon from '@/assets/icons/32px/User.svg';
+import logo from '@/assets/images/common/Logo.png';
 import { Link } from 'react-router-dom';
-import cartIcon from '../../assets/icons/Cart.svg';
-import favorIcon from '../../assets/icons/Favorites.svg';
-import userIcon from '../../assets/icons/User.svg';
-import logo from '../../assets/images/common/Logo.png';
 
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';

@@ -1,6 +1,6 @@
+import searchIcon from '@/assets/icons/32px/Search.svg';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import searchIcon from '../../assets/icons/Search.svg';
 const SearchBar = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
