@@ -38,7 +38,6 @@ export default [
       prettier: eslintPluginPrettier,
     },
     rules: {
-      ...js.configs.recommended.rules,
       ...eslintJS.configs.recommended.rules,
       ...eslintPluginReact.configs.recommended.rules,
       ...patchedReactHooksPlugin.configs.recommended.rules,
