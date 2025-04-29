@@ -6,7 +6,7 @@ const NavBar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className="flex gap-14">
+    <div className="hidden gap-14 md:flex">
       <Link
         to="/"
         className={isActive('/') ? 'font-bold text-black' : 'text-gray-400'}
