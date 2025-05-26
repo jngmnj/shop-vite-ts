@@ -1,4 +1,3 @@
-// eslint.config.js
 import { fixupPluginRules } from "@eslint/compat";
 import eslintJS from "@eslint/js";
 import tsParser from "@typescript-eslint/parser";
@@ -14,14 +13,15 @@ const patchedImportPlugin = fixupPluginRules(eslintPluginImport);
 const patchedReactHooksPlugin = fixupPluginRules(eslintPluginReactHooks);
 
 export default [
+  { ignores: ['node_modules', 'dist', 'build', 'coverage', 'public'] },
   {
-    files: ["src/**/*.ts", "src/**/*.tsx"],
+    files: ['src/**/*.ts', 'src/**/*.tsx'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        project: "./tsconfig.eslint.json",
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        project: './tsconfig.eslint.json',
         ecmaFeatures: { jsx: true },
       },
       globals: {
@@ -31,46 +31,57 @@ export default [
     },
     plugins: {
       react: eslintPluginReact,
-      "react-hooks": patchedReactHooksPlugin,
-      "jsx-a11y": eslintPluginJsxA11y,
+      'react-hooks': patchedReactHooksPlugin,
+      'jsx-a11y': eslintPluginJsxA11y,
       import: patchedImportPlugin,
-      "react-refresh": eslintPluginReactRefresh,
+      'react-refresh': eslintPluginReactRefresh,
       prettier: eslintPluginPrettier,
     },
     rules: {
       ...eslintJS.configs.recommended.rules,
       ...eslintPluginReact.configs.recommended.rules,
       ...patchedReactHooksPlugin.configs.recommended.rules,
+      ...patchedImportPlugin.configs.recommended.rules,
 
-      // Airbnb 룰 핵심 추출
-      "react/jsx-filename-extension": ["warn", { extensions: [".tsx"] }],
-      "react/prop-types": "off",
-      "react/react-in-jsx-scope": "off",
-      "jsx-a11y/anchor-is-valid": "warn",
-      "jsx-a11y/alt-text": "warn",
-      "import/order": [
-        "warn",
+      'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'jsx-a11y/anchor-is-valid': 'warn',
+      'jsx-a11y/alt-text': 'warn',
+      'import/order': [
+        'warn',
         {
-          groups: [["builtin", "external"], "internal"],
-          "newlines-between": "ignore",
+          groups: ['builtin', 'external', 'internal'],
+          pathGroups: [
+            {
+              pattern: '@assets/**',
+              group: 'internal',
+              position: 'after',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['react'],
+          'newlines-between': 'ignore',
         },
       ],
-      "prefer-const": ["error", {
-        "destructuring": "all",         // 배열과 객체 분해할당에도 적용
-        "ignoreReadBeforeAssign": false // 변수 선언 전에 읽히는 경우를 무시할지 여부
-      }],
+      'prefer-const': [
+        'error',
+        {
+          destructuring: 'all',
+          ignoreReadBeforeAssign: false,
+        },
+      ],
 
-      // 추가된 플러그인 적용
-      "react-refresh/only-export-components": [
-        "warn",
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': [
+        'warn',
         { allowConstantExport: true },
       ],
-      "prettier/prettier": [
-        "error",
+      'prettier/prettier': [
+        'error',
         {
-          endOfLine: "auto",
+          endOfLine: 'auto',
           singleQuote: true,
-          trailingComma: "all",
+          trailingComma: 'all',
           tabWidth: 2,
           useTabs: false,
         },
@@ -78,7 +89,24 @@ export default [
     },
     settings: {
       react: {
-        version: "detect",
+        version: 'detect',
+      },
+      'import/resolver': {
+        alias: {
+          map: [
+            ['@', './src'],
+            ['@components', './src/components'],
+            ['@data', './src/data'],
+            ['@pages', './src/pages'],
+            ['@assets', './src/assets'],
+            ['@hooks', './src/hooks'],
+            ['@utils', './src/utils'],
+            ['@api', './src/api'],
+            ['@store', './src/store'],
+            ['@constants', './src/constants'],
+          ],
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
       },
     },
   },
