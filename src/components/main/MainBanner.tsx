@@ -3,6 +3,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import "swiper/css/navigation";
 import { MAIN_BANNER_CONTENT } from '@/constants/main';
+import { Link } from 'react-router-dom';
 import 'swiper/css/pagination';
 
 const MainBanner = () => {
@@ -35,10 +36,11 @@ const MainBanner = () => {
           imageSrc,
           backgroundStyle,
           isBannerDark,
+          link,
         } = item;
         return (
           <SwiperSlide key={item.id} className="overflow-hidden rounded-sm">
-            <div style={backgroundStyle}>
+            <Link to={link} style={backgroundStyle}>
               <div
                 className={`inner relative flex min-h-[40rem] w-full flex-col items-center justify-between px-4 pt-22 md:flex-row md:pt-0`}
               >
@@ -69,7 +71,7 @@ const MainBanner = () => {
                   <img src={imageSrc} alt={`IPhone 14 Pro`} />
                 </div>
               </div>
-            </div>
+            </Link>
           </SwiperSlide>
         );
       })}

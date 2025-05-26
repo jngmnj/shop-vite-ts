@@ -12,6 +12,7 @@ export const MAIN_BANNER_CONTENT = [
       background: `#211C24`,
     },
     isBannerDark: true,
+    link: '/',
   },
   {
     id: 2,
@@ -24,5 +25,6 @@ export const MAIN_BANNER_CONTENT = [
       background: `#211C24`,
     },
     isBannerDark: true,
+    link: '/',
   },
 ];
