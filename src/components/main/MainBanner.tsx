@@ -14,7 +14,7 @@ const MainBanner = () => {
   return (
     <div style={backgroundStyle}>
       <div
-        className={`inner flex h-[calc(100vh-5.5rem)] w-full flex-col items-center justify-between px-4 pt-22 md:flex-row`}
+        className={`inner relative flex min-h-[40rem] w-full flex-col items-center justify-between px-4 pt-22 md:flex-row md:pt-0`}
       >
         <div className="mb-4 text-center md:mb-0 md:text-left">
           <p
@@ -39,7 +39,7 @@ const MainBanner = () => {
             Shop Now
           </button>
         </div>
-        <div className="max-w-2/3 overflow-hidden md:max-h-[500px] md:max-w-max lg:max-h-max">
+        <div className="max-h-[66vw] max-w-2/3 overflow-hidden md:absolute md:right-0 md:bottom-0 md:max-h-max md:max-w-max">
           <img src={imageSrc} alt={`IPhone 14 Pro`} />
         </div>
       </div>
