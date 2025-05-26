@@ -1,9 +1,9 @@
-import 'swiper/css';
+import { Link } from 'react-router-dom';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import "swiper/css/navigation";
 import { MAIN_BANNER_CONTENT } from '@/constants/main';
-import { Link } from 'react-router-dom';
+import 'swiper/css';
 import 'swiper/css/pagination';
 
 const MainBanner = () => {
@@ -40,7 +40,7 @@ const MainBanner = () => {
         } = item;
         return (
           <SwiperSlide key={item.id} className="overflow-hidden rounded-sm">
-            <Link to={link} style={backgroundStyle}>
+            <Link to={link} style={backgroundStyle} className="block">
               <div
                 className={`inner relative flex min-h-[40rem] w-full flex-col items-center justify-between px-4 pt-22 md:flex-row md:pt-0`}
               >
