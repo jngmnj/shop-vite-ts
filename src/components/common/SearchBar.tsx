@@ -1,6 +1,8 @@
-import searchIcon from '@/assets/icons/32px/Search.svg';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import searchIcon from '@/assets/icons/32px/Search.svg';
+
 const SearchBar = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="hidden flex-1 md:flex">
+    <div className="hidden w-full max-w-[24rem] flex-1 md:flex">
       <form onSubmit={handleSubmit} className="w-full">
         <input
           type="text"
