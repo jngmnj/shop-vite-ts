@@ -55,12 +55,9 @@ const ProductGrid = () => {
             The new 15‑inch MacBook Air makes room for more of what you love
             with a spacious Liquid Retina display.
           </p>
-          <Link
-            to="/"
-            className="mt-4 inline-block w-full rounded-lg border bg-transparent px-6 py-4 text-black transition-all duration-300 ease-in-out hover:border-gray-700 hover:bg-[#ffffff78] lg:w-auto lg:border lg:px-14"
-          >
+          <button className="mt-4 inline-block w-full rounded-lg border bg-transparent px-6 py-4 text-black transition-all duration-300 ease-in-out hover:border-gray-700 hover:bg-[#ffffff78] lg:w-auto lg:border lg:px-14">
             Shop Now
-          </Link>
+          </button>
         </div>
       </Link>
 
