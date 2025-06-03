@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+.btn {
+    @apply inline-flex items-center justify-center font-medium transition-colors duration-200 leading-6 cursor-pointer;
+}
+.btn-lg {
+  @apply rounded-md py-4 px-14;
+}
+
+.btn-xl {
+    @apply rounded-lg py-3 px-16;
+}
+
+.btn-filled {
+  @apply bg-black text-white hover:bg-neutral-800;
+}
+
+.btn-outlined {
+  @apply border border-black text-black hover:bg-neutral-100;
+}
+
+.btn-white-outlined {
+  @apply border-white bg-transparent text-white border hover:bg-[#ffffff1a];
+}

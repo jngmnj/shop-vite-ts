@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('../assets/fonts/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+*,
+body {
+  font-family: 'Inter', sans-serif !important;
+  box-sizing: border-box;
+}
+.inner {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+}
+
+@layer components {
+  .swiper-pagination{
+    @apply bottom-14!;
+    z-index: 10;
+  }
+  .swiper-pagination-bullet {
+    @apply w-2 h-2 bg-black rounded-full opacity-10;
+  }
+  .swiper-pagination-bullet-active {
+    @apply bg-black opacity-100;
+  }
+}
+
