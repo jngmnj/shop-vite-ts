@@ -8,7 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
   children: React.ReactNode;
   className?: string;
-  variant?: 'filled' | 'outlined' | 'white-outlined';
+  variant?: 'filled' | 'outlined' | 'whiteOutlined';
   size?: 'lg' | 'xl';
 }
 const baseClass = 'btn';
@@ -19,7 +19,7 @@ const sizeMap = {
 const variantMap = {
   filled: 'btn-filled',
   outlined: 'btn-outlined',
-  'white-outlined': 'btn-white-outlined',
+  whiteOutlined: 'btn-white-outlined',
 };
 
 const Button = ({
