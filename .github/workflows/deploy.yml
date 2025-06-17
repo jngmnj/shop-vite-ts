@@ -1,0 +1,21 @@
+name: Deploy to S3 and CloudFront
+
+on:
+  push:
+    branches:
+      - deploy
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Repository 파일 목록 출력
+        run: |
+          echo "Listing files in the repository:"
+          ls -la
+
+    
