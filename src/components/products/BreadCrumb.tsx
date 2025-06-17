@@ -13,7 +13,7 @@ type BreadcrumbProps = {
 
 const BreadCrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <div className="inner py-10">
+    <div className="py-10">
       <nav className="flex items-center gap-4 text-gray-500">
         {items.map((item, idx) => (
           <React.Fragment key={idx}>
