@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import MetaTag from '@components/common/MetaTag';
 import BottomBanner from '@components/main/BottomBanner';
 import CategoryTab from '@components/main/CategoryTab';
@@ -5,7 +7,6 @@ import MainBanner from '@components/main/MainBanner';
 import ProductGrid from '@components/main/ProductGrid';
 import PromotionBanner from '@components/main/PromotionBanner';
 import ProductList from '@components/products/ProductList';
-import { useState } from 'react';
 
 const dummyCategories = [
   { id: 1, name: 'All', href: '/' },

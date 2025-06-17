@@ -1,9 +1,10 @@
-import facebookIcon from '@/assets/icons/16px/Facebook.svg';
-import instagramIcon from '@/assets/icons/16px/Instagram.svg';
-import tiktokIcon from '@/assets/icons/16px/Tiktok.svg';
-import xIcon from '@/assets/icons/16px/Twitter.svg';
-import logo from '@/assets/images/common/Logo_w.png';
 import { Link } from 'react-router-dom';
+
+import facebookIcon from '@assets/icons/16px/Facebook.svg';
+import instagramIcon from '@assets/icons/16px/Instagram.svg';
+import tiktokIcon from '@assets/icons/16px/Tiktok.svg';
+import xIcon from '@assets/icons/16px/Twitter.svg';
+import logo from '@assets/images/common/Logo_w.png';
 const Footer = () => {
   return (
     <footer className="bg-black px-8 py-12 text-[#CFCFCF] lg:px-0 lg:py-26">
